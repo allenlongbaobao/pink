@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/allenlongbaobao/pink#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
     "eslint-config-ant": "^0.0.1",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.4",

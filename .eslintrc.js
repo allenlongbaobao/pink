@@ -2,9 +2,15 @@
 
 module.exports = {
   root: true,
-  extends: ["eslint-config-ant/base"],
-  rules: {},
-  settings: {
-    
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  extends: [
+    'eslint-config-ant/base',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  rules: {
+    allowArgumentsExplicitlyTypedAsAny?: true;
   },
+  settings: {},
 };
