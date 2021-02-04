@@ -31,3 +31,29 @@ export const isDeepEqual = (obj1: any, obj2: any, testPrototypes = false): boole
     obj1Props.every((prop) => isDeepEqual(obj1[prop], obj2[prop]))
   );
 };
+
+/**
+ * 指定次数调用异步方法，调用中，如果成功，则返回，不再调用，如果失败，则继续调用
+ * 默认调用 三次
+ */
+export const applyAsyncFnTimes = (fn: Function, times: number = 3) => {
+  return () => {
+    return new Promise((resolve, reject) => {
+      const runner = () => {
+        if (times > 0) {
+          fn()
+            .then(resolve) // 成功了就直接返回
+            .catch(() => {
+              // 失败了再次执行
+              times--;
+              runner();
+            });
+        } else {
+          // 执行达到指定次数，不再执行,返回失败
+          reject();
+        }
+      };
+      runner();
+    });
+  };
+};
